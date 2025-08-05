@@ -1,0 +1,94 @@
+didalam header terdapat logo, list menu, icon menu,  search, divider dan shoping cart sama rectangle dibawah, saya akan sebutin propertienya:
+header: 
+ - alignment: tidak ada,
+ - position: x 0, y 0
+ - Layout: flow: freeform, dimensions: w 1440, h 81
+logo cozy:
+ - alignment: tidak ada,
+ - posistion: x 40, y 24
+ - layot:
+    - resizing: auto width
+    - dimensions: w 71, h 39
+ - typography: Cambany, 
+        - mixed
+        - 24
+        - line height auto
+        - letter spacing 0%
+        - alignment: align left
+        - letter spacing: 0%
+        - fill space cade
+list menu :
+ - alignment: tidak ada,
+ - position: x 471, y 32
+ - flow: horizontal
+ - resizing : w 495 hug dan h 16 hug
+ - alignment: align top left
+ - gap: 41
+ - didalam list menu terdapat kata kata dengan propertinya sebagai berikut:
+    - shop: 
+        - alignment: tidak ada,
+        - position: tidak ada,
+        - layout: auto width,
+        - resizing: w 38 hug, h 16 hug,
+        - typography (udah saya buat tinggal impot typography label small yang bisa kita ambil lewat theme.tsx)
+        - fill space cadet ( warna juga bisa saya ambil juga di theme.tsx)
+    - collective:
+        - alignment: tidak ada,
+        - position: x 79 , y 0
+        - layout: auto width,
+        - resizing: w 82 hug, h 16 hug,
+        - typography (udah saya buat tinggal impot typography label small yang bisa kita ambil lewat theme.tsx)
+        - fill space cadet ( warna juga bisa saya ambil juga di theme.tsx)
+    - Designers:
+        - alignment: tidak ada,
+        - position: x 202, y 0,
+        - layout: auto width,
+        - resizing: w 76 hug, h 16 hug,
+        - typography (udah saya buat tinggal impot typography label small yang bisa kita ambil lewat theme.tsx)
+        - fill space cadet ( warna juga bisa saya ambil juga di theme.tsx)
+    - About Us:
+        - alignment: tidak ada,
+        - position: 319, y 0,
+        - layout: auto width,
+        - resizing: w 70 hug, h 16 hug,
+        - typography (udah saya buat tinggal impot typography label small yang bisa kita ambil lewat theme.tsx)
+        - fill space cadet ( warna juga bisa saya ambil juga di theme.tsx)
+    - contact:
+        - alignment: tidak ada,
+        - position: x 430, y 0 ,
+        - layout: auto width,
+        - resizing: w 65 hug, h 16 hug,
+        - typography (udah saya buat tinggal impot typography label small yang bisa kita ambil lewat theme.tsx)
+        - fill space cadet ( warna juga bisa saya ambil juga di theme.tsx)
+        
+icon menu/hamburger:
+ - alignment: tidak ada
+ - position: x 1207 dan y 28,
+ - layout : w 24, h 24
+ - clip contetnt
+
+icon search:
+ - alignment: tidak ada
+ - position: x 1271, y 28
+ - layout: 
+    - dimensions: w 24, h 24
+    - clip content
+
+divider: 
+ - alignment: tidak ada 
+ - position: x 1335 dan y 0
+ - layout : 
+    - dimensions: w 1 dan h 80
+
+icon shopping cart:
+ - alignment: tidak ada,
+ - position: x 1376, y 28,
+ - rotation 180 derajat, 
+ - layout: w 24, h 24
+ - clip content
+
+rectangle:
+ - alignment: tidak ada,
+ - position: x 0, y 80,
+ - rotation : 0
+ - layout: w 1440, h 1
