@@ -18,5 +18,6 @@ export const color = {
     VeryLightGray: "#EDEDED",
     BackgroundLight: "#F5F5F5",
     White: "#FFFFFF",
+    Black: "#000000",
   },
 };
