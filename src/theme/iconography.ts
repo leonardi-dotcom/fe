@@ -14,6 +14,8 @@ import SendBoxIcon from "./icon/SendBoxIcon";
 import SovaOrangeIcon from "./icon/SovaOrangeIcon";
 import StarIcon from "./icon/StarIcon";
 import BotButtonIcon from "./icon/BotButtonIcon";
+import FourStarIcon from "./icon/FourStarIcon";
+import CommaIcon from "./icon/CommaIcon";
 
 export const icons = {
   hamburgerIcon: HamburgerIcon,
@@ -32,4 +34,6 @@ export const icons = {
   sovaOrangeIcon: SovaOrangeIcon,
   hammerIcon: HammerIcon,
   botButtonIcon: BotButtonIcon,
+  fourStarIcon: FourStarIcon,
+  commaIcon: CommaIcon,
 };

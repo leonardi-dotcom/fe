@@ -6,6 +6,8 @@ import FramePrimarySection from "../components/sections/FramePrimarySection";
 import CategorySection02 from "../components/sections/CategorySection02";
 import FrameSecondarySection from "../components/sections/FrameSecondarySection";
 import FrameDedicationSection from "../components/sections/FrameDedicationSection";
+import GalerySection from "../components/sections/GalerySection";
+import TestimonialSection from "../components/sections/TestimonialSection";
 
 const Home = () => {
   return (
@@ -18,6 +20,8 @@ const Home = () => {
       <CategorySection02 />
       <FrameSecondarySection />
       <FrameDedicationSection />
+      <GalerySection />
+      <TestimonialSection />
     </>
   );
 };
