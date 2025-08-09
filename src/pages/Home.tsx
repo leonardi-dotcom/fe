@@ -8,6 +8,7 @@ import FrameSecondarySection from "../components/sections/FrameSecondarySection"
 import FrameDedicationSection from "../components/sections/FrameDedicationSection";
 import GalerySection from "../components/sections/GalerySection";
 import TestimonialSection from "../components/sections/TestimonialSection";
+import FooterSection from "../components/sections/FooterSection";
 
 const Home = () => {
   return (
@@ -22,6 +23,7 @@ const Home = () => {
       <FrameDedicationSection />
       <GalerySection />
       <TestimonialSection />
+      <FooterSection />
     </>
   );
 };

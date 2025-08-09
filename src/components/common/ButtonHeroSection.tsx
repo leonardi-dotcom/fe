@@ -5,6 +5,8 @@ interface CustomButtonProps extends ButtonProps {
   enableShadow?: boolean;
   sizeVariant?: "extraSmall" | "small" | "medium" | "large" | "extraLarge";
   customColor?: string;
+  customPadding?: string;
+  customBorderRadius?: string;
 }
 
 // Menyesuaikan tipe untuk menyimpan nilai mobile dan desktop secara terpisah
@@ -108,22 +110,35 @@ const sizeMap: Record<SizeKey, SizeStyle> = {
 
 const ButtonHeroSection = styled(Button, {
   shouldForwardProp: (prop) =>
-    !["noBorder", "enableShadow", "sizeVariant", "customColor"].includes(
-      prop.toString()
-    ),
+    ![
+      "noBorder",
+      "enableShadow",
+      "sizeVariant",
+      "customColor",
+      "customPadding",
+      "customBorderRadius",
+    ].includes(prop.toString()),
 })<CustomButtonProps>(
-  ({ theme, noBorder, enableShadow, sizeVariant = "medium", customColor }) => {
+  ({
+    theme,
+    noBorder,
+    enableShadow,
+    sizeVariant = "medium",
+    customColor,
+    customPadding,
+    customBorderRadius,
+  }) => {
     const sizeStyles = sizeMap[sizeVariant];
 
     return {
       // Gaya dasar (mobile-first)
-      padding: sizeStyles.mobile.padding,
+      padding: customPadding ?? sizeStyles.mobile.padding,
       fontSize: sizeStyles.mobile.fontSize,
       height: sizeStyles.mobile.height,
       width: sizeStyles.mobile.width,
       gap: sizeStyles.mobile.gap,
 
-      borderRadius: "1rem",
+      borderRadius: customBorderRadius ?? "1rem",
       textTransform: "none",
       border: noBorder
         ? "none"
@@ -141,7 +156,7 @@ const ButtonHeroSection = styled(Button, {
 
       // Terapkan gaya desktop menggunakan breakpoint
       [theme.breakpoints.up("md")]: {
-        padding: sizeStyles.desktop.padding,
+        padding: customPadding ?? sizeStyles.desktop.padding,
         fontSize: sizeStyles.desktop.fontSize,
         height: sizeStyles.desktop.height,
         width: sizeStyles.desktop.width,

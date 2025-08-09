@@ -19,5 +19,6 @@ export const color = {
     BackgroundLight: "#F5F5F5",
     White: "#FFFFFF",
     Black: "#000000",
+    Orange: "#F66B0E",
   },
 };
