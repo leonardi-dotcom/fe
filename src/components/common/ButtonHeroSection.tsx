@@ -1,9 +1,16 @@
+import { Height } from "@mui/icons-material";
 import { Button, styled, type ButtonProps } from "@mui/material";
 
 interface CustomButtonProps extends ButtonProps {
   noBorder?: boolean;
   enableShadow?: boolean;
-  sizeVariant?: "extraSmall" | "small" | "medium" | "large" | "extraLarge";
+  sizeVariant?:
+    | "extraSmall"
+    | "small"
+    | "medium"
+    | "large"
+    | "extraLarge"
+    | "normal";
   customColor?: string;
   customPadding?: string;
   customBorderRadius?: string;
@@ -103,6 +110,22 @@ const sizeMap: Record<SizeKey, SizeStyle> = {
       fontSize: "1rem",
       height: "3.5rem",
       width: "12.875rem",
+      gap: "1rem",
+    },
+  },
+  normal: {
+    mobile: {
+      padding: "0.75rem 1.25rem",
+      fontSize: "1rem",
+      height: "3.5rem",
+      width: "100%",
+      gap: "1rem",
+    },
+    desktop: {
+      padding: "1.125rem 2.5rem",
+      fontSize: "0.8rem",
+      height: "3.25rem",
+      width: "auto",
       gap: "1rem",
     },
   },

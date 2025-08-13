@@ -16,6 +16,17 @@ import StarIcon from "./icon/StarIcon";
 import BotButtonIcon from "./icon/BotButtonIcon";
 import FourStarIcon from "./icon/FourStarIcon";
 import CommaIcon from "./icon/CommaIcon";
+import LeftCursorIcon from "./icon/LeftCursorIcon";
+import MinusIcon from "./icon/MinusIcon";
+import PlusIcon from "./icon/PlusIcon";
+import NormalStarFourIcon from "./icon/NormalStarFourIcon";
+import GreenHeartIcon from "./icon/GreenHeartIcon";
+import FbIcon from "./icon/socialIcon/FbIcon";
+import TwitIcon from "./icon/socialIcon/TwitIcon";
+import PintIcon from "./icon/socialIcon/PintIcon";
+import IgIcon from "./icon/socialIcon/IgIcon";
+import ChevronLeftIcon from "./icon/ChevronLeftIcon";
+import ChevronRightIcon from "./icon/ChevronRightIcon";
 
 export const icons = {
   hamburgerIcon: HamburgerIcon,
@@ -36,4 +47,15 @@ export const icons = {
   botButtonIcon: BotButtonIcon,
   fourStarIcon: FourStarIcon,
   commaIcon: CommaIcon,
+  leftCursorIcon: LeftCursorIcon,
+  minusIcon: MinusIcon,
+  plusIcon: PlusIcon,
+  normalStarFourIcon: NormalStarFourIcon,
+  greenHeartIcon: GreenHeartIcon,
+  fbicon: FbIcon,
+  twitIcon: TwitIcon,
+  pintIcon: PintIcon,
+  igIcon: IgIcon,
+  chevronLeftIcon: ChevronLeftIcon,
+  chevronRIghtIcon: ChevronRightIcon,
 };
