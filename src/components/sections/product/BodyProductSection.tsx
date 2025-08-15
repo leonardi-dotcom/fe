@@ -1,8 +1,6 @@
 import { useTheme, Box, Typography, alpha, IconButton } from "@mui/material";
 import LeftCursorIcon from "../../../theme/icon/LeftCursorIcon";
 import { useState } from "react";
-import MinusIcon from "../../../theme/icon/MinusIcon";
-import PlusIcon from "../../../theme/icon/PlusIcon";
 import ButtonHeroSection from "../../common/ButtonHeroSection";
 import NormalStarFourIcon from "../../../theme/icon/NormalStarFourIcon";
 import GreenHeartIcon from "../../../theme/icon/GreenHeartIcon";
@@ -27,6 +25,7 @@ import Img02 from "../../../assets/img/Product/img2.png";
 import Img03 from "../../../assets/img/Product/img3.png";
 import Img04 from "../../../assets/img/Product/img4.png";
 import Img05 from "../../../assets/img/Product/img5.png";
+import CountButton from "../../common/CountButton";
 
 const BodyProductSection = () => {
   const theme = useTheme();
@@ -165,14 +164,8 @@ const BodyProductSection = () => {
 
   const [selectedColor, setSelectedColor] =
     useState<keyof typeof productGallery>("green");
-  const [count, setCount] = useState(1);
 
   const currentGallery = productGallery[selectedColor] || [];
-
-  const decrement = () => {
-    setCount((prev) => (prev > 1 ? prev - 1 : prev));
-  };
-  const increment = () => setCount((prev) => prev + 1);
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -186,10 +179,6 @@ const BodyProductSection = () => {
     setCurrentIndex((prev) =>
       prev === currentGallery.length - 1 ? 0 : prev + 1
     );
-  };
-
-  const handleThumbnailClick = (index: any) => {
-    setCurrentIndex(index);
   };
 
   return (
@@ -384,6 +373,7 @@ const BodyProductSection = () => {
               );
             })}
           </Box>
+
           {/* Body Left | Qty */}
           <Box
             sx={{
@@ -394,33 +384,7 @@ const BodyProductSection = () => {
             }}
           >
             {/* Body Left | Qty | Count  */}
-            <Box
-              sx={{
-                width: "10rem",
-                height: "3.25rem",
-                display: "inline-flex",
-                alignItems: "center",
-                border: "2px solid ",
-                borderColor: theme.custom.color.neutral.CoolGrey,
-                borderRadius: 1,
-                justifyContent: "space-between",
-                padding: "4px 8px",
-                userSelect: "none",
-              }}
-            >
-              <IconButton onClick={decrement}>
-                <MinusIcon />
-              </IconButton>
-              <Typography
-                variant="LabelLarge"
-                color={theme.custom.color.neutral.SpaceCadet}
-              >
-                {count}
-              </Typography>
-              <IconButton onClick={increment}>
-                <PlusIcon />
-              </IconButton>
-            </Box>
+            <CountButton />
             {/* Body Left | Qty | Btn add to cart */}
             <ButtonHeroSection
               customColor={theme.custom.color.primary.Verdigris}

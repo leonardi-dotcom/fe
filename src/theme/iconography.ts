@@ -27,6 +27,8 @@ import PintIcon from "./icon/socialIcon/PintIcon";
 import IgIcon from "./icon/socialIcon/IgIcon";
 import ChevronLeftIcon from "./icon/ChevronLeftIcon";
 import ChevronRightIcon from "./icon/ChevronRightIcon";
+import PercentageIcon from "./icon/PercentageIcon";
+import TrailingIcon from "./icon/TrailingIcon";
 
 export const icons = {
   hamburgerIcon: HamburgerIcon,
@@ -58,4 +60,6 @@ export const icons = {
   igIcon: IgIcon,
   chevronLeftIcon: ChevronLeftIcon,
   chevronRIghtIcon: ChevronRightIcon,
+  percentageIcon: PercentageIcon,
+  trailingIcon: TrailingIcon,
 };
