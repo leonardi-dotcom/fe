@@ -29,6 +29,8 @@ import ChevronLeftIcon from "./icon/ChevronLeftIcon";
 import ChevronRightIcon from "./icon/ChevronRightIcon";
 import PercentageIcon from "./icon/PercentageIcon";
 import TrailingIcon from "./icon/TrailingIcon";
+import ChevronGreyRightIcon from "./icon/ChevronGreyRightIcon";
+import GreenPlusIcon from "./icon/GreenPlusIcon";
 
 export const icons = {
   hamburgerIcon: HamburgerIcon,
@@ -60,6 +62,8 @@ export const icons = {
   igIcon: IgIcon,
   chevronLeftIcon: ChevronLeftIcon,
   chevronRIghtIcon: ChevronRightIcon,
+  chevronGreyRIghtIcon: ChevronGreyRightIcon,
   percentageIcon: PercentageIcon,
   trailingIcon: TrailingIcon,
+  greenPlusIcon: GreenPlusIcon,
 };
