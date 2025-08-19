@@ -4,6 +4,7 @@ import Product from "./pages/Product";
 import Cart from "./pages/Cart";
 import Address from "./pages/Address";
 import Shipping from "./pages/Shipping";
+import Payment from "./pages/Payment";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/address" element={<Address />} />
         <Route path="/shipping" element={<Shipping />} />
+        <Route path="/payment" element={<Payment />} />
       </Routes>
     </BrowserRouter>
   );

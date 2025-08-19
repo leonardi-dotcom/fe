@@ -31,6 +31,8 @@ import PercentageIcon from "./icon/PercentageIcon";
 import TrailingIcon from "./icon/TrailingIcon";
 import ChevronGreyRightIcon from "./icon/ChevronGreyRightIcon";
 import GreenPlusIcon from "./icon/GreenPlusIcon";
+import VisaIcon from "./icon/VisaIcon";
+import MasterCardIcon from "./icon/MasterCardIcon";
 
 export const icons = {
   hamburgerIcon: HamburgerIcon,
@@ -66,4 +68,6 @@ export const icons = {
   percentageIcon: PercentageIcon,
   trailingIcon: TrailingIcon,
   greenPlusIcon: GreenPlusIcon,
+  visaIcon: VisaIcon,
+  masterCardIcon: MasterCardIcon,
 };
