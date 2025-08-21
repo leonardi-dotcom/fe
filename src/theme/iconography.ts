@@ -33,6 +33,10 @@ import ChevronGreyRightIcon from "./icon/ChevronGreyRightIcon";
 import GreenPlusIcon from "./icon/GreenPlusIcon";
 import VisaIcon from "./icon/VisaIcon";
 import MasterCardIcon from "./icon/MasterCardIcon";
+import FacebookLoginIcon from "./icon/FacebookLoginIcon";
+import GoogleLoginIcon from "./icon/GoogleLoginIcon";
+import EmailLoginIcon from "./icon/login/EmailLoginIcon";
+import KeyLoginIcon from "./icon/login/KeyLoginIcon";
 
 export const icons = {
   hamburgerIcon: HamburgerIcon,
@@ -70,4 +74,8 @@ export const icons = {
   greenPlusIcon: GreenPlusIcon,
   visaIcon: VisaIcon,
   masterCardIcon: MasterCardIcon,
+  facebookLoginIcon: FacebookLoginIcon,
+  googleLoginIcon: GoogleLoginIcon,
+  emailLoginIcon: EmailLoginIcon,
+  keyLoginIcon: KeyLoginIcon,
 };
