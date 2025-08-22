@@ -1,0 +1,2 @@
+ignoredBuiltDependencies:
+  - '@mui/x-telemetry'
