@@ -1,4 +1,5 @@
 import {
+  alpha,
   Box,
   Button,
   Card,
@@ -6,6 +7,7 @@ import {
   Divider,
   IconButton,
   InputAdornment,
+  LinearProgress,
   TextField,
   Typography,
   useTheme,
@@ -18,11 +20,156 @@ import KeyLoginIcon from "../../../theme/icon/login/KeyLoginIcon";
 import { useState } from "react";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 
+// Password strength checker function
+const checkPasswordStrength = (password: string) => {
+  const theme = useTheme();
+
+  let score = 0;
+  let feedback = [];
+
+  if (password.length >= 8) {
+    score += 1;
+  } else {
+    feedback.push("Minimal 8 karakter");
+  }
+
+  if (/[a-z]/.test(password)) {
+    score += 1;
+  } else {
+    feedback.push("Gunakan huruf kecil");
+  }
+
+  if (/[A-Z]/.test(password)) {
+    score += 1;
+  } else {
+    feedback.push("Gunakan huruf besar");
+  }
+
+  if (/[0-9]/.test(password)) {
+    score += 1;
+  } else {
+    feedback.push("Gunakan angka");
+  }
+
+  if (/[^a-zA-Z0-9]/.test(password)) {
+    score += 1;
+  } else {
+    feedback.push("Gunakan simbol (!@#$%^&*)");
+  }
+
+  let strength = "Sangat Lemah";
+  let color = theme.custom.color.secondary.ImperialRed; // red
+  let progress = 20;
+
+  switch (score) {
+    case 0:
+    case 1:
+      strength = "Sangat Lemah";
+      color = theme.custom.color.secondary.ImperialRed;
+      progress = 20;
+      break;
+    case 2:
+      strength = "Lemah";
+      color = theme.custom.color.secondary.MikadoYellow;
+      progress = 40;
+      break;
+    case 3:
+      strength = "Sedang";
+      color = theme.custom.color.secondary.MikadoYellow;
+      progress = 60;
+      break;
+    case 4:
+      strength = "Kuat";
+      color = theme.custom.color.neutral.Green;
+      progress = 80;
+      break;
+    case 5:
+      strength = "Sangat Kuat";
+      color = theme.custom.color.neutral.Green;
+      progress = 100;
+      break;
+  }
+
+  return { score, strength, color, progress, feedback };
+};
+
+// Password Strength Indicator Component
+const PasswordStrengthIndicator = ({ password }: { password: string }) => {
+  const theme = useTheme();
+  const { strength, color, progress, feedback } =
+    checkPasswordStrength(password);
+
+  if (!password) return null;
+
+  return (
+    <Box sx={{ mt: 1, mb: 1 }}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          mb: 0.5,
+        }}
+      >
+        <Typography variant="caption" sx={{ fontSize: "0.75rem" }}>
+          Kekuatan Password:
+        </Typography>
+        <Typography
+          variant="caption"
+          sx={{
+            fontSize: "0.75rem",
+            fontWeight: "bold",
+            color: color,
+          }}
+        >
+          {strength}
+        </Typography>
+      </Box>
+
+      <LinearProgress
+        variant="determinate"
+        value={progress}
+        sx={{
+          height: 6,
+          borderRadius: 3,
+          backgroundColor: alpha(color, 0.2),
+          "& .MuiLinearProgress-bar": {
+            backgroundColor: color,
+            borderRadius: 3,
+          },
+        }}
+      />
+
+      {feedback.length > 0 && (
+        <Box sx={{ mt: 0.5 }}>
+          <Typography
+            variant="caption"
+            sx={{
+              fontSize: "0.7rem",
+              color: theme.custom.color.neutral.CoolGrey,
+            }}
+          >
+            Tips: {feedback.slice(0, 2).join(", ")}
+          </Typography>
+        </Box>
+      )}
+    </Box>
+  );
+};
+
 const BodyCreateLoginSection = () => {
   const theme = useTheme();
 
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  const passwordsMatch =
+    password && confirmPassword && password === confirmPassword;
+  const showPasswordMismatch = confirmPassword.length > 0 && !passwordsMatch;
+
   const [remember, setRemember] = useState(false);
 
   return (
@@ -50,7 +197,7 @@ const BodyCreateLoginSection = () => {
         <Card
           sx={{
             width: "40rem",
-            height: "50rem",
+            height: "60rem",
             display: "flex",
             flexDirection: "column",
             p: 2,
@@ -136,116 +283,164 @@ const BodyCreateLoginSection = () => {
           {/* CreateLogin Body | Email & password */}
           <Box
             sx={{
+              minHeight: "auto",
               display: "flex",
               flexDirection: "column",
+              p: 3,
               gap: 2,
-              minWidth: "fit-content",
-              height: "4rem",
-              mt: "1rem",
             }}
           >
-            <TextField
-              label="Email"
-              type="email"
-              placeholder="you@example.com"
-              variant="filled"
-              helperText="Massukan email yang valid"
-              fullWidth
-              slotProps={{
-                input: {
-                  disableUnderline: true,
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <EmailLoginIcon style={{ marginTop: "-14px" }} />
-                    </InputAdornment>
-                  ),
-                },
-                inputLabel: {
-                  sx: {
-                    textAlign: "left",
-                    width: "100%",
-                    pr: 2,
-                    ml: "2.3rem",
-                  },
-                },
+            {/* Password Change Form */}
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                gap: 2,
+                minWidth: "fit-content",
+                height: "auto",
+                mt: "1rem",
               }}
-            />
-            <TextField
-              label="Password"
-              type={showPassword ? "text" : "password"}
-              placeholder="••••••••"
-              variant="filled"
-              helperText="Minimal 8 karakter"
-              fullWidth
-              slotProps={{
-                input: {
-                  disableUnderline: true,
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <KeyLoginIcon style={{ marginTop: "-14px" }} />
-                    </InputAdornment>
-                  ),
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <IconButton
-                        onClick={() => setShowPassword((p1) => !p1)}
-                        edge="end"
-                      >
-                        {showPassword ? <VisibilityOff /> : <Visibility />}
-                      </IconButton>
-                    </InputAdornment>
-                  ),
-                },
-                inputLabel: {
-                  sx: {
-                    textAlign: "left",
-                    width: "100%",
-                    pr: 2,
-                    ml: "2.1rem",
+            >
+              <TextField
+                label="Email"
+                type="email"
+                placeholder="you@example.com"
+                variant="filled"
+                helperText="Masukkan email yang valid"
+                fullWidth
+                slotProps={{
+                  input: {
+                    disableUnderline: true,
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <EmailLoginIcon style={{ marginTop: "-14px" }} />
+                      </InputAdornment>
+                    ),
                   },
-                },
-              }}
-            />
-            <TextField
-              label="Konfirmasi Password"
-              type={showConfirmPassword ? "text" : "password"}
-              placeholder="••••••••"
-              variant="filled"
-              helperText="Minimal 8 karakter"
-              fullWidth
-              slotProps={{
-                input: {
-                  disableUnderline: true,
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <KeyLoginIcon style={{ marginTop: "-14px" }} />
-                    </InputAdornment>
-                  ),
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <IconButton
-                        onClick={() => setShowConfirmPassword((p) => !p)}
-                        edge="end"
-                      >
-                        {showConfirmPassword ? (
-                          <VisibilityOff />
-                        ) : (
-                          <Visibility />
-                        )}
-                      </IconButton>
-                    </InputAdornment>
-                  ),
-                },
-                inputLabel: {
-                  sx: {
-                    textAlign: "left",
-                    width: "100%",
-                    pr: 2,
-                    ml: "2.1rem",
+                  inputLabel: {
+                    sx: {
+                      textAlign: "left",
+                      width: "100%",
+                      pr: 2,
+                      ml: "2.3rem",
+                    },
                   },
-                },
-              }}
-            />
+                }}
+              />
+
+              <Box>
+                <TextField
+                  label="Password"
+                  type={showPassword ? "text" : "password"}
+                  placeholder="••••••••"
+                  variant="filled"
+                  helperText="Minimal 8 karakter dengan kombinasi huruf, angka, dan simbol"
+                  fullWidth
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  slotProps={{
+                    input: {
+                      disableUnderline: true,
+                      startAdornment: (
+                        <InputAdornment position="start">
+                          <KeyLoginIcon style={{ marginTop: "-14px" }} />
+                        </InputAdornment>
+                      ),
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          <IconButton
+                            onClick={() => setShowPassword((p1) => !p1)}
+                            edge="end"
+                          >
+                            {showPassword ? <VisibilityOff /> : <Visibility />}
+                          </IconButton>
+                        </InputAdornment>
+                      ),
+                    },
+                    inputLabel: {
+                      sx: {
+                        textAlign: "left",
+                        width: "100%",
+                        pr: 2,
+                        ml: "2.1rem",
+                      },
+                    },
+                  }}
+                />
+                {/* Password Strength Indicator */}
+                <PasswordStrengthIndicator password={password} />
+              </Box>
+              <Box
+                sx={{
+                  height: "auto",
+                }}
+              >
+                <TextField
+                  label="Konfirmasi Password"
+                  type={showConfirmPassword ? "text" : "password"}
+                  placeholder="••••••••"
+                  variant="filled"
+                  helperText={
+                    showPasswordMismatch
+                      ? "Password tidak cocok"
+                      : passwordsMatch
+                      ? "Password cocok ✓"
+                      : "Ulangi password yang sama"
+                  }
+                  fullWidth
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  error={showPasswordMismatch}
+                  slotProps={{
+                    input: {
+                      disableUnderline: true,
+                      startAdornment: (
+                        <InputAdornment position="start">
+                          <KeyLoginIcon style={{ marginTop: "-14px" }} />
+                        </InputAdornment>
+                      ),
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          <IconButton
+                            onClick={() => setShowConfirmPassword((p) => !p)}
+                            edge="end"
+                          >
+                            {showConfirmPassword ? (
+                              <VisibilityOff />
+                            ) : (
+                              <Visibility />
+                            )}
+                          </IconButton>
+                        </InputAdornment>
+                      ),
+                    },
+                    inputLabel: {
+                      sx: {
+                        textAlign: "left",
+                        width: "100%",
+                        pr: 2,
+                        ml: "2.1rem",
+                      },
+                    },
+                  }}
+                />
+                {/* Password Match Indicator */}
+                {passwordsMatch && (
+                  <Box sx={{ mt: 0.5 }}>
+                    <Typography
+                      variant="caption"
+                      sx={{
+                        fontSize: "0.75rem",
+                        color: theme.custom.color.neutral.Green,
+                        fontWeight: "bold",
+                      }}
+                    >
+                      ✓ Password berhasil dikonfirmasi
+                    </Typography>
+                  </Box>
+                )}
+              </Box>
+            </Box>
           </Box>
           {/* CreateLogin Body | Remember me & Forgot Password */}
           <Box
@@ -253,7 +448,6 @@ const BodyCreateLoginSection = () => {
               display: "flex",
               flexDirection: "row",
               alignItems: "center",
-              mt: "14rem",
               gap: "0.5rem",
               justifyContent: "space-between",
             }}
@@ -263,6 +457,7 @@ const BodyCreateLoginSection = () => {
                 display: "flex",
                 flexDirection: "row",
                 gap: "0.5rem",
+                alignItems: "center",
               }}
             >
               <Checkbox
