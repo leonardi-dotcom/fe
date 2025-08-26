@@ -8,6 +8,7 @@ import Payment from "./pages/Payment";
 import CreateLogin from "./pages/CreateLogin";
 import Login from "./pages/Login";
 import Account from "./pages/Account";
+import ProductList from "./pages/ProductList";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/createlogin" element={<CreateLogin />} />
         <Route path="/login" element={<Login />} />
         <Route path="/account" element={<Account />} />
+        <Route path="/productlist" element={<ProductList />} />
       </Routes>
     </BrowserRouter>
   );
