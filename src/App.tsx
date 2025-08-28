@@ -10,6 +10,7 @@ import Login from "./pages/Login";
 import Account from "./pages/Account";
 import ProductList from "./pages/ProductList";
 import AboutUs from "./pages/AboutUs";
+import Contact from "./pages/Contact";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/account" element={<Account />} />
         <Route path="/productlist" element={<ProductList />} />
         <Route path="/aboutus" element={<AboutUs />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
     </BrowserRouter>
   );
