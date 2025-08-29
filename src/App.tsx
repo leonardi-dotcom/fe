@@ -11,6 +11,7 @@ import Account from "./pages/Account";
 import ProductList from "./pages/ProductList";
 import AboutUs from "./pages/AboutUs";
 import Contact from "./pages/Contact";
+import ProblemError from "./pages/ProblemError";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path="/productlist" element={<ProductList />} />
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/upps" element={<ProblemError />} />
       </Routes>
     </BrowserRouter>
   );
